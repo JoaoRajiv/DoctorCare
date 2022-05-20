@@ -2,7 +2,7 @@ window.addEventListener('scroll', onScroll)
 
 onScroll();
 function onScroll() {
-  showNavOnScroll()
+  showNavOnScroll();
   showBackToTopButtonOnScroll();
 
   activateMenuAtCurrentSection(home);
@@ -16,7 +16,7 @@ function activateMenuAtCurrentSection(section) {
 
   const sectionTop = section.offsetTop;
 
-  const sectionHeight = section.offsetHeight;
+  const sectionHeight = home.offsetHeight;
 
   const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop;
 
@@ -36,6 +36,10 @@ function activateMenuAtCurrentSection(section) {
   }
    
 }
+
+const purple = 280;
+const green = 180;
+const blue = 240;
 
 function showNavOnScroll() {
   if (scrollY > 0) {
