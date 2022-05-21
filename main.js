@@ -33,13 +33,14 @@ function activateMenuAtCurrentSection(section) {
   menuElement.classList.remove('active');
   if (sectionBoundaries) {
     menuElement.classList.add('active')
-  }
-   
+  }   
 }
+let currentColor = getComputedStyle(document.documentElement).getPropertyValue('--hue')
+console.log(currentColor)
 
-const purple = 280;
-const green = 180;
-const blue = 240;
+const purple = '280';
+const green = '170';
+const blue = '240';
 
 function showNavOnScroll() {
   if (scrollY > 0) {
@@ -54,6 +55,18 @@ function showBackToTopButtonOnScroll() {
     backToTopButton.classList.add('show');
   } else {
     backToTopButton.classList.remove('show')
+  }
+}
+
+function changeColor(color) {
+  if (color == purple){
+    document.documentElement.style.setProperty('--hue', purple)
+  }
+  if (color == green){
+    document.documentElement.style.setProperty('--hue', green)
+  }
+  if (color == blue){
+    document.documentElement.style.setProperty('--hue', blue)
   }
 }
 
