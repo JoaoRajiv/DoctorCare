@@ -1,71 +1,72 @@
 window.addEventListener('scroll', onScroll)
-
-onScroll();
 function onScroll() {
-  showNavOnScroll();
-  showBackToTopButtonOnScroll();
-
-  activateMenuAtCurrentSection(home);
-  activateMenuAtCurrentSection(services);
-  activateMenuAtCurrentSection(about);
-  activateMenuAtCurrentSection(contact);
+  showNavOnScroll(),
+    showBackToTopButtonOnScroll(),
+    activateMenuAtCurrentSection(home),
+    activateMenuAtCurrentSection(services),
+    activateMenuAtCurrentSection(about),
+    activateMenuAtCurrentSection(contact)
 }
 
 function activateMenuAtCurrentSection(section) {
-  const targetLine = scrollY + innerHeight / 2;
+  const targetLine = scrollY + innerHeight / 2
 
-  const sectionTop = section.offsetTop;
+  const sectionTop = section.offsetTop
 
-  const sectionHeight = home.offsetHeight;
+  const sectionHeight = home.offsetHeight
 
-  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop;
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
 
-  const sectionEndsAt = sectionTop + sectionHeight;
+  const sectionEndsAt = sectionTop + sectionHeight
 
-  const sectionEndPassedTargetLine = sectionEndsAt <= targetLine;
+  const sectionEndPassedTargetLine = sectionEndsAt <= targetLine
 
-  const sectionBoundaries = sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine;
+  const sectionBoundaries =
+    sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine
 
-  const sectionId = section.getAttribute('id');
+  const sectionId = section.getAttribute('id')
 
-  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`);
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
 
-  menuElement.classList.remove('active');
+  menuElement.classList.remove('active')
   if (sectionBoundaries) {
     menuElement.classList.add('active')
-  }   
+  }
 }
-let currentColor = getComputedStyle(document.documentElement).getPropertyValue('--hue')
-console.log(currentColor)
+let currentColor = getComputedStyle(document.documentElement).getPropertyValue(
+  '--hue'
+)
 
-const purple = '280';
-const green = '170';
-const blue = '240';
+const purple = '280'
+const green = '170'
+const blue = '240'
+
+const nav = document.getElementById('navigation')
 
 function showNavOnScroll() {
   if (scrollY > 0) {
-    navigation.classList.add('scroll');
+    nav.classList.add('scroll')
   } else {
-    navigation.classList.remove('scroll')
+    nav.classList.remove('scroll')
   }
 }
 
 function showBackToTopButtonOnScroll() {
   if (scrollY > 800) {
-    backToTopButton.classList.add('show');
+    backToTopButton.classList.add('show')
   } else {
     backToTopButton.classList.remove('show')
   }
 }
 
 function changeColor(color) {
-  if (color == purple){
+  if (color == purple) {
     document.documentElement.style.setProperty('--hue', purple)
   }
-  if (color == green){
+  if (color == green) {
     document.documentElement.style.setProperty('--hue', green)
   }
-  if (color == blue){
+  if (color == blue) {
     document.documentElement.style.setProperty('--hue', blue)
   }
 }
@@ -80,7 +81,7 @@ function closeMenu() {
 ScrollReveal({
   origin: 'top',
   distance: '30px',
-  duration: 900,
+  duration: 900
 }).reveal(`
   #home,
   #home img, 
@@ -92,4 +93,4 @@ ScrollReveal({
   #about header,
   #about .content p,
   #about .content img
-`);
+`)
